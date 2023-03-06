@@ -23,7 +23,7 @@ const DESCRIPTIONS = [
 ];
 const NAMES = ['Алексадр', 'Тимур', 'Иван', 'Трандуил', 'Илья', 'Олег'];
 
-const getRandomInteger = (a: number, b: number) => {
+const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
   const result = Math.random() * (upper - lower + 1) + lower;
@@ -32,12 +32,12 @@ const getRandomInteger = (a: number, b: number) => {
 
 const createComment = () => ({
   id: getRandomInteger(0, ID_COUNT),
-  avatar: img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg,
+  avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
   message: MESSAGES[getRandomInteger(1, MESSAGES.length - 1)],
   name: NAMES[getRandomInteger(1, NAMES.length - 1)],
 });
 
-const createCommentsArray = commentsCount => {
+const createCommentsArray = (commentsCount) => {
   const commentsArray = [];
   for (let i = 0; i < commentsCount; i++) {
     commentsArray.push(createComment);
@@ -45,7 +45,7 @@ const createCommentsArray = commentsCount => {
   return commentsArray;
 };
 
-const createCard = index => {
+const createCard = (index) => {
   const randomId = getRandomInteger(0, index);
   const randomDescriptionIndex = getRandomInteger(0, DESCRIPTIONS.length - 1); // это число
   const randomDescription = DESCRIPTIONS[randomDescriptionIndex];
@@ -54,9 +54,9 @@ const createCard = index => {
   const randomNameIndex = getRandomInteger(0, NAMES.length - 1);
   const randomName = NAMES[randomNameIndex];
   const randomUrlIndex = getRandomInteger(1, ID_COUNT);
-  const randomUrl = photos/${randomUrlIndex}.jpg;
+  const randomUrl = `photos/${randomUrlIndex}.jpg`;
   const randomAvatarIndex = getRandomInteger(1, AVATAR_COUNT);
-  const randomAvatar = img/avatar-${randomAvatarIndex}.svg;
+  const randomAvatar = `img/avatar-${randomAvatarIndex}.svg`;
 
   const object = {
     id: randomId,
@@ -68,9 +68,9 @@ const createCard = index => {
     message: randomMessages,
     name: randomName,
   };
-  console.log(object);
   return object;
 };
+
 const cards = [];
 for (let i = 0; i < ID_COUNT; i++) {
   cards.push(createCard(i + 1));
