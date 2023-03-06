@@ -75,3 +75,10 @@ const cards = [];
 for (let i = 0; i < ID_COUNT; i++) {
   cards.push(createCard(i + 1));
 }
+let createCards = () => {
+  const cards = [];
+  for (let i = 0; i < ID_COUNT; i++) {
+    cards += createCard(i + 1)
+    return cards
+  }
+}
