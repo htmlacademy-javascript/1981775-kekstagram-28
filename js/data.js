@@ -1,4 +1,4 @@
-import {createCards, createCard, createCommentsArray, createComment, getRandomInteger} from './util.js'
+import {createCommentsArray, getRandomInteger} from './util.js'
 const PICTURE_COUNT = 25;
 const LIKE_COUNT_MIN = 15;
 const LIKE_COUNT_MAX = 200;
@@ -24,28 +24,14 @@ const DESCRIPTIONS = [
 ];
 const NAMES = ['Алексадр', 'Тимур', 'Иван', 'Трандуил', 'Илья', 'Олег'];
 
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
+//  создаем коминтарии из 4 критерий (id, avatar, message, name)
 const createComment = () => ({
   id: getRandomInteger(0, ID_COUNT),
   avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
   message: MESSAGES[getRandomInteger(1, MESSAGES.length - 1)],
   name: NAMES[getRandomInteger(1, NAMES.length - 1)],
 });
-
-const createCommentsArray = (commentsCount) => {
-  const commentsArray = [];
-  for (let i = 0; i < commentsCount; i++) {
-    commentsArray.push(createComment);
-  }
-  return commentsArray;
-};
-
+// создаем одну карточку
 const createCard = (index) => {
   const randomId = getRandomInteger(0, index);
   const randomDescriptionIndex = getRandomInteger(0, DESCRIPTIONS.length - 1); // это число
@@ -71,13 +57,14 @@ const createCard = (index) => {
   };
   return object;
 };
-
+// создаем моссив из карточек
 let createCards = () => {
   const cards = [];
   for (let i = 0; i < ID_COUNT; i++) {
-    cards += createCard(i + 1)
+    cards.push(createCards);
   }
-  return cards
-}
+  return cards;
+};
 
-export {createCards};
+createCards();
+
