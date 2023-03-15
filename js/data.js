@@ -1,9 +1,8 @@
-import {createCommentsArray, getRandomInteger} from './util.js'
+import { getRandomInteger} from './util.js';
 const PICTURE_COUNT = 25;
 const LIKE_COUNT_MIN = 15;
 const LIKE_COUNT_MAX = 200;
 const COMMENT_COUNT = 20;
-const ID_COUNT = 25;
 const AVATAR_COUNT = 10;
 const MESSAGES = [
   'Всё отлично!',
@@ -26,11 +25,19 @@ const NAMES = ['Алексадр', 'Тимур', 'Иван', 'Трандуил',
 
 //  создаем коминтарии из 4 критерий (id, avatar, message, name)
 const createComment = () => ({
-  id: getRandomInteger(0, ID_COUNT),
+  id: getRandomInteger(0, PICTURE_COUNT),
   avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
   message: MESSAGES[getRandomInteger(1, MESSAGES.length - 1)],
   name: NAMES[getRandomInteger(1, NAMES.length - 1)],
 });
+// создаем массив
+const createCommentsArray = (commentsCount) => {
+  const commentsArray = [];
+  for (let i = 0; i < commentsCount; i++) {
+    commentsArray.push(createComment);
+  }
+  return commentsArray;
+};
 // создаем одну карточку
 const createCard = (index) => {
   const randomId = getRandomInteger(0, index);
@@ -40,12 +47,12 @@ const createCard = (index) => {
   const randomMessages = MESSAGES[randomMessageIndex];
   const randomNameIndex = getRandomInteger(0, NAMES.length - 1);
   const randomName = NAMES[randomNameIndex];
-  const randomUrlIndex = getRandomInteger(1, ID_COUNT);
+  const randomUrlIndex = getRandomInteger(1, PICTURE_COUNT);
   const randomUrl = `photos/${randomUrlIndex}.jpg`;
   const randomAvatarIndex = getRandomInteger(1, AVATAR_COUNT);
   const randomAvatar = `img/avatar-${randomAvatarIndex}.svg`;
 
-  const object = {
+  const card = {
     id: randomId,
     url: randomUrl,
     description: randomDescription,
@@ -55,16 +62,17 @@ const createCard = (index) => {
     message: randomMessages,
     name: randomName,
   };
-  return object;
+  return card;
 };
 // создаем моссив из карточек
-let createCards = () => {
+const createCards = () => {
   const cards = [];
-  for (let i = 0; i < ID_COUNT; i++) {
-    cards.push(createCards);
+  for (let i = 0; i < PICTURE_COUNT; i++) {
+    cards.push(createCard(i));
   }
   return cards;
 };
 
 createCards();
 
+export { createCards };

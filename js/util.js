@@ -5,13 +5,4 @@ const getRandomInteger = (a, b) => {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-// создаем массив
-const createCommentsArray = (commentsCount) => {
-  const commentsArray = [];
-  for (let i = 0; i < commentsCount; i++) {
-    commentsArray.push(createComment);
-  }
-  return commentsArray;
-};
-
-export { createCommentsArray, getRandomInteger };
+getRandomInteger();
