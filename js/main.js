@@ -1,3 +1,3 @@
-import {createCards} from './data.js';
+import { addPicture } from './draw-thumbnails.js';
 
-createCards();
+addPicture();

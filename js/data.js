@@ -65,14 +65,14 @@ const createCard = (index) => {
   return card;
 };
 // создаем моссив из карточек
-const createCards = () => {
+function createCards() {
   const cards = [];
   for (let i = 0; i < PICTURE_COUNT; i++) {
     cards.push(createCard(i));
   }
   return cards;
-};
+}
 
-createCards();
+const cardList = createCards();
 
-export { createCards };
+export { cardList };
