@@ -1,4 +1,4 @@
-import { getRandomInteger} from './util.js';
+import {getRandomInteger} from './util.js';
 const PICTURE_COUNT = 25;
 const LIKE_COUNT_MIN = 15;
 const LIKE_COUNT_MAX = 200;
