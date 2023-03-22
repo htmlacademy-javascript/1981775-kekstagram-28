@@ -1,4 +1,4 @@
-import { cardList } from './data.js';
+import { createCards } from './data.js';
 // import { } from './.js';
 
 // создаем функцию которая создает элемент на странице
@@ -28,7 +28,7 @@ function pictureGenerator(card) {
   // создаем первый спан
   const pictureFirstSpan = createElement('span');
   pictureFirstSpan.classList.add('picture__comments');
-  pictureFirstSpan.innerText = card.comments;
+  pictureFirstSpan.innerText = card.comments.length;
   // создаем второй спан
   const pictureSecondSpan = createElement('span');
   pictureSecondSpan.classList.add('picture__likes');
@@ -44,9 +44,12 @@ function pictureGenerator(card) {
 
   return pictureContainer;
 }
+
 function addPicture () {
-  const cards = cardList.map(pictureGenerator);
-  console.log(cards);
+  const pictureCotainer = document.querySelector('.pictures');
+  const container = new DocumentFragment();
+  createCards().forEach((p) => container.append(pictureGenerator(p)));
+  pictureCotainer.append(container);
 }
 
 export { addPicture };

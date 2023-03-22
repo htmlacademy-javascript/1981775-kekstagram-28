@@ -73,6 +73,4 @@ function createCards() {
   return cards;
 }
 
-const cardList = createCards();
-
-export { cardList };
+export { createCards };
