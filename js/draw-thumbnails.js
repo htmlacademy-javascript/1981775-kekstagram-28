@@ -42,7 +42,7 @@ function pictureGenerator(card) {
   // =============================
   pictureContainer.append(pictureLink);
   // вызов обертку pictureFullsizeEventWrapper для большой фотографии
-  pictureFullsizeEventWrapper({target: pictureContainer, card: card});
+  pictureFullsizeEventWrapper(pictureContainer, card);
 
   return pictureContainer;
 

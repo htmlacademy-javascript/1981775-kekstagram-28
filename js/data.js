@@ -34,7 +34,7 @@ const createComment = () => ({
 const createCommentsArray = (commentsCount) => {
   const commentsArray = [];
   for (let i = 0; i < commentsCount; i++) {
-    commentsArray.push(createComment);
+    commentsArray.push(createComment());
   }
   return commentsArray;
 };
