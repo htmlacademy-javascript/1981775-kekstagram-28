@@ -18,9 +18,9 @@ function generatorComment(comment) {
   return socialContainer;
 }
 
-function generatorComments(comments) {
+function generatorComments(comments, qualityComments) {
   const containerComment = new DocumentFragment();
-  comments.forEach((comment) => {
+  comments.slice(0, qualityComments).forEach((comment) => {
     const commentElement = generatorComment(comment);
     containerComment.append(commentElement);
   });
@@ -28,4 +28,6 @@ function generatorComments(comments) {
   return containerComment;
 }
 
+
 export { generatorComments };
+
