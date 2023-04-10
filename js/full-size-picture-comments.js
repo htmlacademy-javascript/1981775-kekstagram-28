@@ -18,15 +18,58 @@ function generatorComment(comment) {
   return socialContainer;
 }
 
-function generatorComments(comments) {
+function generatorComments(comments, qualityComments) {
   const containerComment = new DocumentFragment();
-  comments.forEach((comment) => {
+  comments.slice(0, qualityComments).forEach((comment) => {
     const commentElement = generatorComment(comment);
     containerComment.append(commentElement);
   });
 
   return containerComment;
-
 }
 
-export { generatorComments };
+function updateCommentsElementCounter (qualityComments, qualityShowComments) {
+  const counterElement = `<div class="social__comment-count"> ${qualityShowComments} из <span class="comments-count">${qualityComments}</span> комментариев</div>`;
+  document.querySelector('.social__comment-count').innerHTML = counterElement;
+}
+
+function updateCommentsElements (comments, qualityComments) {
+  const commentsElements = generatorComments(comments, qualityComments);
+  document.querySelector('.social__comments').replaceChildren(commentsElements);
+}
+
+function commentsElement (comments) {
+  let qualityComments = 5;
+  function hendleExpandedComments () {
+
+    if (qualityComments + 5 >= comments.length) {
+      updateCommentsElementCounter(comments.length, comments.length);
+      qualityComments = comments.length;
+      document.querySelector('.comments-loader').classList.add('hidden');
+    } else {
+      qualityComments += 5;
+      updateCommentsElementCounter(comments.length, qualityComments);
+    }
+
+    updateCommentsElements(comments, qualityComments);
+
+  }
+
+  if (qualityComments >= comments.length) {
+    updateCommentsElementCounter(comments.length, comments.length);
+    document.querySelector('.comments-loader').classList.add('hidden');
+  } else {
+    updateCommentsElementCounter(comments.length, qualityComments);
+    document.querySelector('.comments-loader').classList.remove('hidden');
+  }
+
+  document.querySelector('.social__comments-loader').addEventListener('click', hendleExpandedComments);
+
+  updateCommentsElements(comments, qualityComments);
+
+  document.querySelector('.social__comment-count').classList.remove('hidden');
+  return hendleExpandedComments;
+}
+
+export { generatorComments, commentsElement };
+

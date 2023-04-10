@@ -1,6 +1,5 @@
 import { createCards } from './data.js';
-import { pictureFullsizeEventWrapper} from './full-size-pictyre.js';
-
+import { pictureFullSizeEventWrapper } from './full-size-pictyre.js';
 // создаем функцию которая создает элемент на странице
 function createElement(tagName) {
   return document.createElement(tagName);
@@ -42,7 +41,7 @@ function pictureGenerator(card) {
   // =============================
   pictureContainer.append(pictureLink);
   // вызов обертку pictureFullsizeEventWrapper для большой фотографии
-  pictureFullsizeEventWrapper(pictureContainer, card);
+  pictureFullSizeEventWrapper(pictureContainer, card);
 
   return pictureContainer;
 
