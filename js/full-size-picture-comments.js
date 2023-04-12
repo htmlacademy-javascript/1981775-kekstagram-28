@@ -40,7 +40,7 @@ function updateCommentsElements (comments, qualityComments) {
 
 function commentsElement (comments) {
   let qualityComments = 5;
-  function hendleExpandedComments () {
+  function handleExpandedComments () {
 
     if (qualityComments + 5 >= comments.length) {
       updateCommentsElementCounter(comments.length, comments.length);
@@ -63,12 +63,12 @@ function commentsElement (comments) {
     document.querySelector('.comments-loader').classList.remove('hidden');
   }
 
-  document.querySelector('.social__comments-loader').addEventListener('click', hendleExpandedComments);
+  document.querySelector('.social__comments-loader').addEventListener('click', handleExpandedComments);
 
   updateCommentsElements(comments, qualityComments);
 
   document.querySelector('.social__comment-count').classList.remove('hidden');
-  return hendleExpandedComments;
+  return handleExpandedComments;
 }
 
 export { generatorComments, commentsElement };
