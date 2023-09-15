@@ -71,7 +71,7 @@ const hasUniqueTags = (tags) => {
 };
 
 const validateTags = (value) => {
-    const tags = value.trim().splite(' ').filter((tag) => tag.trim().length);
+    const tags = value.trim().split(' ').filter((tag) => tag.trim().length);
     return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
 };
 
